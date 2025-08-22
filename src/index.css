@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-900 text-white;
+}
+@keyframes fingerprintPulse {
+  0% {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  50% {
+    stroke-dashoffset: 500;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-pulse-fingerprint path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: fingerprintPulse 6s linear infinite;
+}
+
