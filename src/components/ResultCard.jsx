@@ -1,60 +1,16 @@
-// export default function ResultCard({ result }) {
-//   return (
-//     <div className="mt-6 p-4 rounded bg-gray-700">
-//       <p>Distance: {result.distance.toFixed(4)}</p>
-//       <p
-//         className={`font-bold ${
-//           result.label.includes("Genuine") ||
-//           result.label.includes("Same")
-//             ? "text-green-400"
-//             : "text-red-400"
-//         }`}
-//       >
-//         Result: {result.label}
-//       </p>
-//     </div>
-//   );
-// }
-
-
-// export default function ResultCard({ result }) {
-//   if (!result) return null;
-
-//   const { distance, label } = result;
-
-//   // Decide text color based on result
-//   const isPositive =
-//     label.toLowerCase().includes("genuine") ||
-//     label.toLowerCase().includes("same");
-
-//   const resultClass = isPositive ? "text-green-400" : "text-red-400";
-
-//   return (
-//     <div className="mt-6 p-4 rounded bg-gray-700">
-//       <p>Distance: {distance?.toFixed(4) ?? "N/A"}</p>
-//       <p className={`font-bold ${resultClass}`}>
-//         Result: {label}
-//       </p>
-//     </div>
-//   );
-// }
-
-
-
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 export default function ResultCard({ result }) {
   const distance = result?.distance?.toFixed(4) ?? "N/A";
+  const finalText = result?.label ?? "Unknown";
 
   // Decide final verdict
   const positiveLabels = ["genuine", "same"];
   const isPositive = positiveLabels.some((word) =>
-    result?.label?.toLowerCase().includes(word)
+    finalText.toLowerCase().includes(word)
   );
-
   const resultClass = isPositive ? "text-green-400" : "text-red-400";
-  const finalText = result?.label ?? "Unknown";
 
   // Step-based reveal
   const [step, setStep] = useState(0);
@@ -92,4 +48,3 @@ export default function ResultCard({ result }) {
     </div>
   );
 }
-
