@@ -51,8 +51,6 @@ import { motion } from "framer-motion";
 export default function About() {
   return (
     <div className="relative min-h-screen pt-28 pb-20 px-6 flex items-start justify-center bg-[#050b16] text-white">
-      <FingerprintBackground />
-
       {/* ABOUT CARD */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
